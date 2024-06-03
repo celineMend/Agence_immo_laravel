@@ -1,4 +1,10 @@
-<!-- resources/views/proprietes/index.blade.php -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liste des Propriétés</title>
+</head>
+<body>
 
     <div class="container">
         <h1>Liste des Propriétés</h1>
@@ -7,6 +13,7 @@
             <thead>
                 <tr>
                     <th>Nom du Bien</th>
+                    <th>Image</th>
                     <th>Catégorie</th>
                     <th>Description</th>
                     <th>Adresse</th>
@@ -19,6 +26,7 @@
                 @foreach($proprietes as $propriete)
                     <tr>
                         <td>{{ $propriete->nom_du_bien }}</td>
+                        <td>{{ $propriete->image }}</td>
                         <td>{{ $propriete->categorie->libelle }}</td>
                         <td>{{ $propriete->description }}</td>
                         <td>{{ $propriete->adresse }}</td>
@@ -32,4 +40,6 @@
             </tbody>
         </table>
     </div>
+</body>
+</html>
 

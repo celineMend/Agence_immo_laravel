@@ -12,4 +12,10 @@ class ProprieteController extends Controller
         $proprietes = Propriete::all();
         return view('proprietes.index', compact('proprietes'));
     }
+
+    public function ajouter()
+    {
+        $categories = Categorie::all();
+        return view('proprietes.ajouter', compact('categories'));
+    }
 }

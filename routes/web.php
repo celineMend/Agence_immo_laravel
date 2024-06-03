@@ -7,3 +7,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('proprietes', [ProprieteController::class, 'index'])->name('proprietes.index');
+Route::get('/ajouter', [ProprieteController::class, 'ajouter'])->name('proprietes.ajouter');
