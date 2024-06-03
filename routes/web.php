@@ -6,4 +6,4 @@ use App\Http\Controllers\ProprieteController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('proprietes',[ProprieteController::class,'index']);
+Route::get('proprietes', [ProprieteController::class, 'index'])->name('proprietes.index');
