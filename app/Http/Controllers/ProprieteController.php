@@ -18,4 +18,18 @@ class ProprieteController extends Controller
         $categories = Categorie::all();
         return view('proprietes.ajouter', compact('categories'));
     }
+    public function ajouter_traitement (Request $request)
+    {
+       $propriete = New Propriete();
+       $propriete->nom = $request->nom;
+       $propriete->image = $request->image;
+       $propriete->categorie_id = $request->categorie_id;
+       $propriete->description = $request->description;
+       $propriete->adresse = $request->adresse;
+       $propriete->statut = $request->statut;
+       $propriete->date_ajout= $request->date_ajout=now();
+       $propriete->save();
+       return redirect('/proprietes')->with('status','propriete a été ajouter avec success');
+
+    }
 }
