@@ -13,3 +13,6 @@ Route::post('ajouterCommentaire/{id}/traitement', [CommentaireController::class,
 Route::get('modifierCommentaire/{id}', [CommentaireController::class, 'modifierCommentaire']);
 Route::post('modifierCommentaire/{id}/traitement', [CommentaireController::class, 'modifierCommentaireTraitement'])->name('commentaire.modifier');
 
+Route::get('supprimerCommentaire/{id}', [CommentaireController::class, 'supprimerCommentaire']);
+
+

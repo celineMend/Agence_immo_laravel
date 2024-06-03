@@ -42,5 +42,13 @@ class CommentaireController extends Controller
         return view('commentaires.modifierCommentaire', compact('commentaire'));
     }
 
+    public function supprimerCommentaire($id) {
+
+        $commentaire = Commentaire::findOrFail($id);
+        $commentaire->delete();
+
+        return redirect()->route('propriete.details', $commentaire->propriete_id)->with('status', 'Le commentaire a bien été supprimer avec succès');
+    }
+
 
 }
