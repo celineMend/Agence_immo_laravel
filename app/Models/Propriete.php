@@ -25,7 +25,7 @@ class Propriete extends Model
     }
 
     public function commentaires(){
-        return $this->belongsTo(comentaires::class);
+        return $this->hasMany(comentaires::class);
     }
 
 
