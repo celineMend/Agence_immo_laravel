@@ -35,5 +35,12 @@ class CommentaireController extends Controller
 
     }
 
+    public function modifierCommentaire($id) {
+
+        $commentaire = Commentaire::findOrFail($id);
+
+        return view('commentaires.modifierCommentaire', compact('commentaire'));
+    }
+
 
 }
