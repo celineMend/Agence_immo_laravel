@@ -29,6 +29,7 @@
                         <td>{{ $categorie->libelle}}</td>
                         <td>{{ $categorie->description }}</td>
                         <td>
+                            <a href="/categories/{{ $categorie->id }}" class="btn btn-info">Voir détail</a><br><br>
                             {{-- <a href="{{ route('categories.modifier', $categorie->id) }}" class="btn btn-primary btn-sm">Éditer</a> --}}
                             {{-- <form action="{{ route('categories.supprimer', $categorie->id) }}" method="POST" class="d-inline">
                                 @csrf

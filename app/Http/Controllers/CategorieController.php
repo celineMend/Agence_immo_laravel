@@ -29,4 +29,11 @@ class CategorieController extends Controller
 
     }
 
+    public function detail($id)
+    {
+        $categorie = Categorie::findOrFail($id);
+
+        return view('categories.detail', compact('categorie'));
+    }
+
 }
