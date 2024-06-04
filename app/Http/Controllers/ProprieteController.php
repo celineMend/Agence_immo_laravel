@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Categorie;
 use App\Models\Propriete;
+use App\Models\Commentaire;
 use Illuminate\Http\Request;
 
 class ProprieteController extends Controller
@@ -31,5 +32,13 @@ class ProprieteController extends Controller
        $propriete->save();
        return redirect('/proprietes')->with('status','propriete a été ajouter avec success');
 
+    }
+
+    public function detail($id)
+    {
+        $propriete = Propriete::findOrFail($id);
+        $commentaires = Commentaire::where('propriete_id', $id)->get();
+
+        return view('proprietes.detail', compact('propriete', 'commentaires'));
     }
 }
