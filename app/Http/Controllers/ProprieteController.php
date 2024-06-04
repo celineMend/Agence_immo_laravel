@@ -60,4 +60,12 @@ class ProprieteController extends Controller
     return redirect('/proprietes')->with('status',' le propriete a été modifier avec succès');
     }
 
+    public function supprimer_proprietes($id)
+{
+    $propriete = Propriete::findOrFail($id);
+    $propriete->delete();
+    return redirect('/proprietes')->with('status', 'La propriété a été supprimée avec succès');
+}
+
+
 }

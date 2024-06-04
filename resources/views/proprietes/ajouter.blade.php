@@ -21,47 +21,35 @@
                 {{ session('status') }}
             </div>
         @endif
-
-    <div class="container">
-        <h1>Ajouter une Propriété</h1>
-        <form action="{{ route('proprietes.ajouter_traitement') }}" method="POST">
+        <form action="{{ route('proprietes.ajouter_traitement') }}" method="POST" class="form_group">
             @csrf
-            <div class="form-group">
-                <label for="nom">Nom du Bien</label>
-                <input type="text" name="nom" id="nom" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="categorie_id">Catégorie</label>
-                <select name="categorie_id" id="categorie_id" class="form-control">
-                    @foreach($categories as $categorie)
-                        <option value="{{ $categorie->id }}">{{ $categorie->libelle }}</option>
-                    @endforeach
-                </select>
+            <div class="mb-3">
+                <label for="nom" class="form-label">Nom de la propriété</label>
+                <input type="text" class="form-control" id="nom" name="nom" required>
             </div>
             <div class="form-group">
                 <label for="image">Image</label>
                 <input type="text" name="image" id="image" class="form-control" required>
             </div>
-            <div class="form-group">
-                <label for="description">Description</label>
-                <textarea name="description" id="description" class="form-control" required name = "description"></textarea>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <input type="text" class="form-control" id="description" name="description" required>
             </div>
-            <div class="form-group">
-                <label for="adresse">Adresse</label>
-                <input type="text" name="adresse" id="adresse" class="form-control" required>
+            <div class="mb-3">
+                <label for="adresse" class="form-label">Adresse</label>
+                <input type="text" class="form-control" id="adresse" name="adresse" required>
             </div>
-            <div class="form-group">
-                <label for="statut">Status</label>
-                <select name="statut" id="statut" class="form-control" required>
-                    <option value="1">Occupé</option>
-                    <option value="0">Non Occupé</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="date_ajout">Date d'Ajout</label>
-                <input type="date" name="date_ajout" id="date_ajout" class="form-control" required>
+            <div class="mb-3">
+                <label for="statut" class="form-label">Statut</label>
+                <input type="number" class="form-control" id="statut" name="statut" required>
             </div>
             <button type="submit" class="btn btn-primary">Ajouter</button>
+            <br><br>
+            <a href="/proprietes" class="btn btn-danger">Retourner à la liste des propriétés</a>
         </form>
     </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
 
