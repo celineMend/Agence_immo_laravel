@@ -17,8 +17,8 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Nom</th>
-                    <th>Contenu</th>
+                    <th>Libelle</th>
+                    <th>Description</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -26,8 +26,8 @@
                 @forelse ($categories as $categorie)
                     <tr>
                         <td>{{ $categorie->id }}</td>
-                        <td>{{ $categorie->nom }}</td>
-                        <td>{{ $categorie->contenu }}</td>
+                        <td>{{ $categorie->libelle}}</td>
+                        <td>{{ $categorie->description }}</td>
                         <td>
                             {{-- <a href="{{ route('categories.modifier', $categorie->id) }}" class="btn btn-primary btn-sm">Éditer</a> --}}
                             {{-- <form action="{{ route('categories.supprimer', $categorie->id) }}" method="POST" class="d-inline">

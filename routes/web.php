@@ -17,5 +17,7 @@ Route::get('/proprietes/supprimer/{id}', [ProprieteController::class, 'supprimer
 
 //catégories
 Route::get('categories',[CategorieController::class,'index'])->name('categories.index');
+Route::get('/ajouter', [CategorieController::class, 'ajouter'])->name('categories.ajouter');
+Route::post('/ajouter_traitement', [CategorieController::class, 'ajouter_traitement'])->name('categories.ajouter_traitement');
 
 
