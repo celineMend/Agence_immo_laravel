@@ -42,12 +42,12 @@ class ProprieteController extends Controller
         return view('proprietes.detail', compact('propriete', 'commentaires'));
     }
 
-    public function modifier_proprietes($id){
+    public function modifier($id){
         $proprietes = Propriete::find($id);
         return view('proprietes.modifier', compact('proprietes'));
     }
 
-    public function modifier_proprietes_traitement(Request $request)
+    public function modifier_traitement(Request $request)
     {
 
 

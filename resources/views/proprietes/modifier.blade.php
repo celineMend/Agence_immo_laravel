@@ -23,22 +23,26 @@
         @endif
         <form action="/modifier/traitement" method="POST" class="form_group">
             @csrf
-            <input type="hidden" name="id" style="display:none;" value="{{ $propriete->id }}">
+            <input type="hidden" name="id" style="display:none;" value="{{ $proprietes->id }}">
             <div class="mb-3">
                 <label for="nom" class="form-label">Nom de la propriété</label>
-                <input type="text" class="form-control" id="nom" name="nom" value="{{ $propriete->nom }}">
+                <input type="text" class="form-control" id="nom" name="nom" value="{{ $proprietes->nom }}">
+            </div>
+            <div class="form-group">
+                <label for="image">Image</label>
+                <input type="text" name="image" id="image" class="form-control" required>
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
-                <input type="text" class="form-control" id="description" name="description" value="{{ $propriete->description }}">
+                <input type="text" class="form-control" id="description" name="description" value="{{ $proprietes->description }}">
             </div>
             <div class="mb-3">
                 <label for="adresse" class="form-label">Adresse</label>
-                <input type="text" class="form-control" id="adresse" name="adresse" value="{{ $propriete->adresse }}">
+                <input type="text" class="form-control" id="adresse" name="adresse" value="{{ $proprietes->adresse }}">
             </div>
             <div class="mb-3">
                 <label for="statut" class="form-label">Statut</label>
-                <input type="number" class="form-control" id="statut" name="statut" value="{{ $propriete->statut }}">
+                <input type="number" class="form-control" id="statut" name="statut" value="{{ $proprietes->statut }}">
             </div>
             <button type="submit" class="btn btn-primary">Modifier une propriété</button>
             <br><br>

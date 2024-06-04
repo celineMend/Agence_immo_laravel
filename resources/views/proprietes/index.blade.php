@@ -8,7 +8,7 @@
 
     <div class="container">
         <h1>Liste des Propriétés</h1>
-
+        <a href="/ajouter" class="btn btn-info mb-3">Ajouter</a>
         <table class="table">
             <thead>
                 <tr>
@@ -33,7 +33,8 @@
                         <td>{{ $propriete->status ? 'Occupé' : 'Non Occupé' }}</td>
                         <td>{{ $propriete->date_ajout }}</td>
                         <td>
-                            -- <a href="{{ route('proprietes.detail', $propriete->id) }}" class="btn btn-info">Voir</a> --
+                            <a href="{{ route('proprietes.detail', $propriete->id) }}" class="btn btn-info">Voir</a>
+                            <a href="/modifier/{{ $propriete->id }}" class="btn btn-info">Modifier</a><br> 
                         </td>
                     </tr>
                 @endforeach
