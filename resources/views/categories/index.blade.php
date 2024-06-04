@@ -29,13 +29,15 @@
                         <td>{{ $categorie->libelle}}</td>
                         <td>{{ $categorie->description }}</td>
                         <td>
+                           <div class= "d-flex">
                             <a href="/categories/{{ $categorie->id }}" class="btn btn-info">Voir détail</a><br><br>
                             <a href="{{ route('categories.modifier', $categorie->id) }}" class="btn btn-primary btn-sm">Modifier</a>
-                            {{-- <form action="{{ route('categories.supprimer', $categorie->id) }}" method="POST" class="d-inline">
+                            <form action="{{ route('categories.supprimer', $categorie->id) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette catégorie ?')">Supprimer</button>
-                            </form> --}}
+                            </form>
+                           </div>
                         </td>
                     </tr>
                 @empty

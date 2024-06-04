@@ -22,5 +22,6 @@ Route::post('/ajouter_traitement', [CategorieController::class, 'ajouter_traitem
 Route::get('categories/{id}', [CategorieController::class, 'detail'])->name('categories.detail');
 Route::get('/modifier/{id}', [CategorieController::class, 'modifier'])->name('categories.modifier');
 Route::post('/modifier_traitement', [CategorieController::class, 'modifier_traitement'])->name('categories.modifier_traitement');
+Route::delete('/categories/supprimer/{id}', [CategorieController::class, 'supprimer'])->name('categories.supprimer');
 
 

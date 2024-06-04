@@ -46,7 +46,13 @@ class CategorieController extends Controller
     $categorie->libelle = $request->libelle;
     $categorie->description = $request->description;
     $categorie->save();
-    return redirect('/categories')->with('status',' le categorie a été modifier avec succès');
+    return redirect('/catégories')->with('status',' le catégorie a été modifier avec succès');
+    }
+    public function supprimer($id)
+    {
+        $categorie = Categorie::findOrFail($id);
+        $categorie->delete();
+        return redirect('/categories')->with('status', 'La catégorie a été supprimée avec succès');
     }
 
 

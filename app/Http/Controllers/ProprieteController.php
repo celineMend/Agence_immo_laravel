@@ -67,5 +67,4 @@ class ProprieteController extends Controller
     return redirect('/proprietes')->with('status', 'La propriété a été supprimée avec succès');
 }
 
-
 }
