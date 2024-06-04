@@ -13,7 +13,7 @@ Route::post('/ajouter_traitement', [ProprieteController::class, 'ajouter_traitem
 Route::get('proprietes/{id}', [ProprieteController::class, 'detail'])->name('proprietes.detail');
 
 Route::get('commentaires', [CommentaireController::class, 'afficherCommentaire'])->name('proprietes.commentaires.afficher');
-Route::post('ajouterCommentaire/{id}/traitement', [CommentaireController::class, 'ajouterCommentaireTraitement']);
+Route::post('ajouterCommentaire/{id}/traitement', [CommentaireController::class, 'ajouterCommentaireTraitement'])->name('commentaire.ajouter');
 
 Route::get('modifierCommentaire/{id}', [CommentaireController::class, 'modifierCommentaire']);
 Route::post('modifierCommentaire/{id}/traitement', [CommentaireController::class, 'modifierCommentaireTraitement'])->name('commentaire.modifier');

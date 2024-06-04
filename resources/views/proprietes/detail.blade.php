@@ -7,6 +7,7 @@
     <meta name="author" content="celine Mendy, moussa Sagna">
     <title>Détail de : {{ $propriete->nom }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         .card-custom {
             height: 100%;
@@ -50,20 +51,28 @@
         <div class="container mt-5">
             <h1>Commentaires</h1>
             @foreach ($commentaires as $commentaire)
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $commentaire->nom_complet_auteur }}</h5>
-                        <p class="card-text">{{ $commentaire->contenu }}</p>
+                <li class="comment mb-3">
+                    <strong>{{ $commentaire->nom_auteur }}</strong>
+                    <p>{{ $commentaire->contenu }}</p>
+                    <small class="text-muted">Posté le {{ $commentaire->date_publication }}</small>
+                    <div class="d-flex gap-3 justify-content-end">
+                        <a href="/modifierCommentaire/{{ $commentaire->id }}" class="text-primary"><i class="fa-solid fa-pencil"></i></a>
+                        <a href="/supprimerCommentaire/{{ $commentaire->id }}" class="text-danger"><i class="fa-solid fa-trash"></i></a>
                     </div>
-                </div>
+                </li>
             @endforeach
             <h3>Ajouter un commentaire</h3>
-            <form action="/commentaires/sauvegarder" method="POST">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li class="alert alert-danger">{{ $error }}</li>
+                @endforeach
+            </ul>
+            <form action="{{ route('commentaire.ajouter', $propriete->id) }}" method="POST">
                 @csrf
                 <input type="hidden" name="propriete_id" value="{{ $propriete->id }}">
                 <div class="mb-3">
-                    <label for="nom_complet_auteur" class="form-label">Présentez-vous</label>
-                    <input type="text" class="form-control" id="nom_complet_auteur" name="nom_complet_auteur" required>
+                    <label for="nom_auteur" class="form-label">Présentez-vous</label>
+                    <input type="text" class="form-control" id="nom_auteur" name="nom_auteur" required>
                 </div>
                 <div class="mb-3">
                     <label for="contenu" class="form-label">Laissez un message</label>

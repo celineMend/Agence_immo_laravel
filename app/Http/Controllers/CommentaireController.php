@@ -31,6 +31,8 @@ class CommentaireController extends Controller
 
             'contenu' => $request->contenu,
             'nom_auteur' => $request->nom_auteur,
+            'date_publication' => now()
+
         ]);
 
         return back()->with('status', 'Le commentaire a été ajouter avec succès');
@@ -44,12 +46,29 @@ class CommentaireController extends Controller
         return view('commentaires.modifierCommentaire', compact('commentaire'));
     }
 
+    public function modifierCommentaireTraitement(Request $request, $id)
+    {
+        $request->validate([
+            'contenu' => 'required',
+            'nom_auteur' => 'required'
+        ]);
+
+        $commentaire = Commentaire::findOrFail($id);
+
+        $commentaire->update([
+            'contenu' => $request->contenu,
+            'nom_auteur' => $request->nom_auteur
+        ]);
+
+        return redirect()->route('proprietes.detail', $commentaire->propriete_id)->with('status', 'Le commentaire a été modifié avec succès');
+    }
+
     public function supprimerCommentaire($id) {
 
         $commentaire = Commentaire::findOrFail($id);
         $commentaire->delete();
 
-        return redirect()->route('propriete.details', $commentaire->propriete_id)->with('status', 'Le commentaire a bien été supprimer avec succès');
+        return redirect()->route('proprietes.detail', $commentaire->propriete_id)->with('status', 'Le commentaire a bien été supprimer avec succès');
     }
 
 

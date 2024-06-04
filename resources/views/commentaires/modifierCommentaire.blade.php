@@ -42,7 +42,7 @@
 
                 <div class="mb-3">
                     <label for="auteur" class="form-label">Nom</label>
-                    <input type="text" class="form-control" id="auteur" name="nom_complet_auteur" value="{{ $commentaire->nom_complet_auteur }}" required>
+                    <input type="text" class="form-control" id="auteur" name="nom_auteur" value="{{ $commentaire->nom_auteur }}" required>
                 </div>
                 <div class="mb-3">
                     <label for="contenu" class="form-label">Commentaire</label>
