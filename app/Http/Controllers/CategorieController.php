@@ -35,5 +35,19 @@ class CategorieController extends Controller
 
         return view('categories.detail', compact('categorie'));
     }
+    public function modifier($id){
+        $categories = Categorie::find($id);
+        return view('categories.modifier', compact('categories'));
+    }
+
+    public function modifier_traitement(Request $request)
+    {
+    $categorie = Categorie::find($request->id);
+    $categorie->libelle = $request->libelle;
+    $categorie->description = $request->description;
+    $categorie->save();
+    return redirect('/categories')->with('status',' le categorie a été modifier avec succès');
+    }
+
 
 }

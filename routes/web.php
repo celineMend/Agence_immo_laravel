@@ -20,5 +20,7 @@ Route::get('categories',[CategorieController::class,'index'])->name('categories.
 Route::get('/ajouter', [CategorieController::class, 'ajouter'])->name('categories.ajouter');
 Route::post('/ajouter_traitement', [CategorieController::class, 'ajouter_traitement'])->name('categories.ajouter_traitement');
 Route::get('categories/{id}', [CategorieController::class, 'detail'])->name('categories.detail');
+Route::get('/modifier/{id}', [CategorieController::class, 'modifier'])->name('categories.modifier');
+Route::post('/modifier_traitement', [CategorieController::class, 'modifier_traitement'])->name('categories.modifier_traitement');
 
 
