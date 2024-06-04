@@ -15,7 +15,7 @@ class Categorie extends Model
 
 
     public function proprietes(){
-        return $this->hasMany(Proprietes::class,'categorie_id');
+        return $this->hasMany(Propriete::class,'categorie_id');
 
     }
 

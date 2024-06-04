@@ -21,11 +21,11 @@ class Propriete extends Model
     ];
 
     public function categories(){
-        return $this->belongsTo(categories::class);
+        return $this->belongsTo(Categorie::class);
     }
 
     public function commentaires(){
-        return $this->hasMany(comentaires::class);
+        return $this->hasMany(Commentaire::class);
     }
 
 

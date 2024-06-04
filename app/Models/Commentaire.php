@@ -17,6 +17,6 @@ class Commentaire extends Model
 
 
     public function proprietes(){
-        return $this->hasMany(Proprietes::class);
+        return $this->hasMany(Propriete::class);
     }
 }

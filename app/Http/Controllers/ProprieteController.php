@@ -36,8 +36,9 @@ class ProprieteController extends Controller
 
     public function detail($id)
     {
-        $propriete = Propriete::findOrFail($id);
+        $propriete = Propriete::with('commentaires')->findOrFail($id);
         $commentaires = Commentaire::where('propriete_id', $id)->get();
+
 
         return view('proprietes.detail', compact('propriete', 'commentaires'));
     }
