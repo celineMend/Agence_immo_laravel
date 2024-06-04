@@ -3,13 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Modifier une propriété</title>
+    <title></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
 <div class="container">
     <div class="col s12">
-        <h1>Modifier une propriété</h1>
         <hr>
         <ul>
             @foreach ($errors->all() as $error)
@@ -21,30 +20,29 @@
                 {{ session('status') }}
             </div>
         @endif
-        <form action="/modifier/traitement" method="POST" class="form_group">
+        <form action="/proprietes/ajouter" method="POST" class="form_group">
             @csrf
-            <input type="hidden" name="id" style="display:none;" value="{{ $proprietes->id }}">
             <div class="mb-3">
                 <label for="nom" class="form-label">Nom de la propriété</label>
-                <input type="text" class="form-control" id="nom" name="nom" value="{{ $proprietes->nom }}">
+                <input type="text" class="form-control" id="nom" name="nom" value="{{ old('nom') }}">
             </div>
             <div class="form-group">
                 <label for="image">Image</label>
-                <input type="text" name="image" id="image" class="form-control" required>
+                <input type="text" name="image" id="image" class="form-control" value="{{ old('image') }}" required>
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
-                <input type="text" class="form-control" id="description" name="description" value="{{ $proprietes->description }}">
+                <input type="text" class="form-control" id="description" name="description" value="{{ old('description') }}">
             </div>
             <div class="mb-3">
                 <label for="adresse" class="form-label">Adresse</label>
-                <input type="text" class="form-control" id="adresse" name="adresse" value="{{ $proprietes->adresse }}">
+                <input type="text" class="form-control" id="adresse" name="adresse" value="{{ old('adresse') }}">
             </div>
             <div class="mb-3">
                 <label for="statut" class="form-label">Statut</label>
-                <input type="number" class="form-control" id="statut" name="statut" value="{{ $proprietes->statut }}">
+                <input type="number" class="form-control" id="statut" name="statut" value="{{ old('statut') }}">
             </div>
-            <button type="submit" class="btn btn-primary">Modifier une propriété</button>
+            <button type="submit" class="btn btn-primary">Ajouter une propriété</button>
             <br><br>
             <a href="/proprietes" class="btn btn-danger">Retourner à la liste des propriétés</a>
         </form>
