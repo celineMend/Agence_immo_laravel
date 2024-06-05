@@ -21,7 +21,7 @@
                     {{ session('status') }}
                 </div>
             @endif
-            <form action="{{ route('proprietes.modifier_traitement', ['id' => $proprietes->id]) }}" method="POST" class="form_group">
+            <form action="/modifier_traitement" method="POST" class="form_group">
                 @csrf
                 <input type="hidden" name="id" style="display:none;" value="{{ $proprietes->id }}"required>
                 <div class="mb-3">
@@ -42,7 +42,22 @@
                 </div>
                 <div class="mb-3">
                     <label for="statut" class="form-label">Statut</label>
-                    <input type="number" class="form-control" id="statut" name="statut" value="{{ $proprietes->statut }}"required>
+                    <select name="statut" id="statut" class="form-control" required>
+                        <option value="">Sélectionnez un statut</option>
+                        <option value="1" {{ old('statut', $proprietes->statut) == 1 ? 'selected' : '' }}>Disponible</option>
+                        <option value="0" {{ old('statut', $proprietes->statut) == 0 ? 'selected' : '' }}>Pas disponible</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="categorie" class="form-label">Catégorie</label>
+                    <select name="categorie_id" id="categorie" class="form-control" required>
+                        <option value="">Sélectionnez une catégorie</option>
+                        @foreach ($categories as $categorie)
+                            <option value="{{ $categorie->id }}" {{ old('categorie_id', $proprietes->categorie_id) == $categorie->id ? 'selected' : '' }}>
+                                {{ $categorie->libelle }}
+                            </option>
+                        @endforeach
+                    </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Modifier une propriété</button>
                 <br><br>

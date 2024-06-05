@@ -19,9 +19,12 @@
             padding: 30px 0px;
         }
         .hero-bg {
-            height: 700px;
-            border-radius: 25px;
-            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(https://img.freepik.com/photos-gratuite/villa-luxe-piscine-design-contemporain-spectaculaire-art-numerique-immobilier-maison-maison-propriete-ge_1258-150749.jpg?t=st=1717504664~exp=1717508264~hmac=90f2ff5bbe0034868f6f0aecc7fc21c79be0c1818ebecbf4596fe33878895297&w=1380);
+            height: 800px;
+            border-radius: none;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(https://img.freepik.com/photos-gratuite/hotel-piscine-station-eau-luxe_1203-4648.jpg?t=st=1717594695~exp=1717598295~hmac=b6d0cb3ccc42ccdb4b9e190be044bc4113f8c70f9069c55dd6a7381542fc80cd&w=1380);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: bottom;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -32,6 +35,7 @@
             font-size: 28px;
             text-align: center;
             color: white;
+            line-height: 45px;
         }
 
         .apropos-content {
@@ -42,7 +46,7 @@
         .image{
             flex-basis: 48%;
             height: 530px;
-            background: url(https://img.freepik.com/photos-gratuite/villa-luxe-piscine-design-contemporain-spectaculaire-art-numerique-immobilier-maison-maison-propriete-ge_1258-150749.jpg?t=st=1717504664~exp=1717508264~hmac=90f2ff5bbe0034868f6f0aecc7fc21c79be0c1818ebecbf4596fe33878895297&w=1380);
+            background: url(https://img.freepik.com/photos-gratuite/salon-bois-blanc-rendu-3d-pres-chambre-haut_105762-2197.jpg?t=st=1717576412~exp=1717580012~hmac=16362f39d7716cafaaa29159ba17d474c6cf776462ce6d009fe1c7db802335e8&w=1380);
             background-size: cover;
             box-shadow: -15px -15px 1px blueviolet;
             border: 1px solid white;
@@ -56,8 +60,11 @@
             line-height: 36px;
             text-align: justify;
         }
+        .section,
         .categorie {
-            margin-top: 80px;
+            margin-top: 150px;
+        }
+        .categorie {
             margin-bottom: 80px;
 
         }
@@ -85,18 +92,19 @@
                     </ul>
                 </div>
                 <div class="btns">
-                    <a class="btn btn-light" href="{{ route('login') }}">Connexion</a>
+                    <a class="btn btn-light" href="">Connexion</a>
                     <a class="btn btn-" style="background-color: blueviolet; color: white;" href="">Contact</a>
                 </div>
             </div>
         </nav>
-
+    </div>
         <div class="hero-bg">
-            <h1>Transformez votre rêve de maison en réalité avec notre expertise immobilière.</h1>
+            <h1>Transformez votre rêve de maison en réalité avec notre expertise immobilière. Chez Célina Immo, nous comprenons que chaque propriété raconte une histoire, et nous sommes là pour vous guider à travers chaque étape de votre parcours immobilier.</h1>
         </div>
+    <div class="container">
 
-        <section class="">
-            <hr>
+        <section class="section">
+
             <div class="apropos-content">
                 <div class="image">
                 </div>
@@ -124,14 +132,15 @@
                     <div class="card-img-overlay">
                         <h5 class="card-title">{{ $categorie->libelle }}</h5>
                         <p class="card-text">{{ $categorie->description }}</p>
-                        {{-- <p class="card-text"><small>Last updated 3 mins ago</small></p> --}}
+
                     </div>
                 </div>
                @endforeach
             </div>
+            <a href="/categories" class="btn" style="background-color: blueviolet; color: white;margin-top: 10px;">Gérer les catégories</a>
         </section>
 
-        <section>
+        <section class="section">
             <h2 class="title" style="font-size: 22px; border-bottom: 2px solid blueviolet; padding-bottom: 5px;">Voici la liste de toutes nos proprieté</h2>
             <div class="row row-cols-1 row-cols-md-2 g-4">
                 @foreach($proprietes as $propriete)
@@ -148,7 +157,11 @@
                                     <p class="card-text">{{ $propriete->adresse }}</p>
                                     <div class="mt-auto d-flex justify-content-between align-items-center">
                                         <p class="card-text"><small class="text-muted">{{ $propriete->date_ajout }}</small></p>
-                                        <a href="{{ route('proprietes.detail', $propriete->id) }}" style="font-size: 16px;"><i class="fa-regular fa-eye"></i></a>
+                                        <div>
+                                            <a href="{{ route('proprietes.detail', $propriete->id) }}" style="font-size: 16px;"><i class="fa-regular fa-eye"></i></a>
+                                            <a href="{{ route('proprietes.modifier', $propriete->id) }}" style="font-size: 16px;"><i class="fa-solid fa-pencil"></i>
+                                            <a href="{{ route('proprietes.supprimer', $propriete->id) }}" style="font-size: 16px;"><i class="fa-solid fa-trash"></i></a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

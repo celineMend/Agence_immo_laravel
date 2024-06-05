@@ -38,6 +38,7 @@
                     <p> {{ $propriete->description }} </p>
                     <p> Adresse: {{ $propriete->adresse }} </p>
                     <p> Statut: {{ $propriete->statut == 1 ? 'Disponible' : 'Non disponible' }} </p>
+                    <p> Catégorie: {{ $propriete->categorie_libelle }}</p>
                 </div>
             </div>
             <aside class="col-md-4 blog-sidebar">
@@ -82,14 +83,14 @@
             </form>
         </div>
     </main>
-    @auth
+
     <footer class="blog-footer">
         <nav class="blog-pagination">
             <a class="btn btn-outline-primary" href="/proprietes">Accueil</a>
             <a class="btn btn-outline-secondary" href="/ajouter">Partager</a>
         </nav>
     </footer>
-    @endauth
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
         function confirmDelete(id) {
