@@ -9,7 +9,7 @@
 <body>
 <div class="container">
     <div class="col s12">
-        <h1>Ajouter une propriété</h1>
+        <h1>Ajouter une catégorie</h1>
         <hr>
         <ul>
             @foreach ($errors->all() as $error)
@@ -21,31 +21,22 @@
                 {{ session('status') }}
             </div>
         @endif
-        <form action="{{ route('proprietes.ajouter_traitement') }}" method="POST" class="form_group">
+        <form action="{{ route('categories.ajouter_traitement') }}" method="POST" class="form_group">
             @csrf
             <div class="mb-3">
-                <label for="nom" class="form-label">Nom de la propriété</label>
-                <input type="text" class="form-control" id="nom" name="nom" required>
+                <label for="libelle" class="form-label">libelle</label>
+                <input type="text" class="form-control" id="libelle" name="libelle" required>
             </div>
-            <div class="form-group">
-                <label for="image">Image</label>
-                <input type="text" name="image" id="image" class="form-control" required>
-            </div>
+
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
                 <input type="text" class="form-control" id="description" name="description" required>
             </div>
-            <div class="mb-3">
-                <label for="adresse" class="form-label">Adresse</label>
-                <input type="text" class="form-control" id="adresse" name="adresse" required>
-            </div>
-            <div class="mb-3">
-                <label for="statut" class="form-label">Statut</label>
-                <input type="number" class="form-control" id="statut" name="statut" required>
-            </div>
+
+
             <button type="submit" class="btn btn-primary">Ajouter</button>
             <br><br>
-            <a href="/proprietes" class="btn btn-danger">Retourner à la liste des propriétés</a>
+            <a href="/categories" class="btn btn-danger">Retourner à la liste des Catégories</a>
         </form>
     </div>
 </div>

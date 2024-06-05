@@ -42,4 +42,30 @@ class ProprieteController extends Controller
 
         return view('proprietes.detail', compact('propriete', 'commentaires'));
     }
+
+    public function modifier($id){
+        $proprietes = Propriete::find($id);
+        return view('proprietes.modifier', compact('proprietes'));
+    }
+
+    public function modifier_traitement(Request $request)
+    {
+
+
+
+    $propriete = Propriete::find($request->id);
+    $propriete->nom = $request->nom;
+    $propriete->description = $request->description;
+    $propriete->image = $request->image;
+    $propriete->save();
+    return redirect('/proprietes')->with('status',' le propriete a été modifier avec succès');
+    }
+
+    public function supprimer_proprietes($id)
+{
+    $propriete = Propriete::findOrFail($id);
+    $propriete->delete();
+    return redirect('/proprietes')->with('status', 'La propriété a été supprimée avec succès');
+}
+
 }
