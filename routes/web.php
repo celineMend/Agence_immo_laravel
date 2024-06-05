@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\ProprieteController;
 use App\Http\Controllers\CommentaireController;
@@ -35,4 +36,10 @@ Route::post('modifierCommentaire/{id}/traitement', [CommentaireController::class
 
 Route::get('supprimerCommentaire/{id}', [CommentaireController::class, 'supprimerCommentaire']);
 
+Route::controller(AuthController::class)->group(function() {
+    Route::get('register', 'register')->name('register');
+    Route::post('register', 'registerSave')->name('register.save');
 
+    Route::get('login', 'login')->name('login');
+    Route::post('login', 'loginAction')->name('login.action');
+});

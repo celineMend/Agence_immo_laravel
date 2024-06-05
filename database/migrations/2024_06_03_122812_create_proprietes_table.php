@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('adresse');
             $table->boolean('statut');
             $table->date('date_ajout');
-            $table->foreignId('catégorie_id')->constrained('categories');
+            $table->foreignId('categorie_id')->constrained('categories');
             $table->foreignId('users_id')->constrained('users');
             $table->timestamps();
         });
