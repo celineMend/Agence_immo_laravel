@@ -9,7 +9,8 @@
 <body>
     <div class="container mt-5">
         <h1>Liste des Catégories</h1>
-        <a href="{{ route('categories.ajouter') }}" class="btn btn-success">Ajouter une Catégorie</a>
+        <a href="{{ route('categories.ajouter') }}" class="btn" style="background-color: blueviolet;margin-bottom: 15px;color:white;">Ajouter une Catégorie</a>
+
         @if (session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
         @endif
@@ -30,7 +31,6 @@
                         <td>{{ $categorie->description }}</td>
                         <td>
                            <div class= "d-flex">
-                            <a href="/categories/{{ $categorie->id }}" class="btn btn-info">Voir détail</a><br><br>
                             <a href="{{ route('categories.modifier', $categorie->id) }}" class="btn btn-primary btn-sm">Modifier</a>
                             <form action="{{ route('categories.supprimer', $categorie->id) }}" method="POST" class="d-inline">
                                 @csrf
@@ -40,14 +40,14 @@
                            </div>
                         </td>
                     </tr>
-                @empty
-                    <tr>
-                        <td colspan="3">Aucune catégorie trouvée.</td>
-                    </tr>
-                @endforelse
+                    @empty
+                        <tr>
+                            <td colspan="3">Aucune catégorie trouvée.</td>
+                        </tr>
+                    @endforelse
             </tbody>
         </table>
-
+        <a href="/proprietes">retour</a>
     </div>
 </body>
 </html>

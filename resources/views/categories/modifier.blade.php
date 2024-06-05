@@ -21,7 +21,7 @@
                     {{ session('status') }}
                 </div>
             @endif
-            <form action="{{ route('categories.modifier_traitement', ['id' => $categories->id]) }}" method="POST" class="form_group">
+            <form action="{{ route('categories.modifier_traitement') }}" method="POST" class="form_group">
                 @csrf
                 <input type="hidden" name="id" style="display:none;" value="{{ $categories->id }}"required>
                 <div class="mb-3">

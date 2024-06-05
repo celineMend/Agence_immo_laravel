@@ -19,7 +19,7 @@ class CategorieController extends Controller
         $categories = Categorie::all();
         return view('categories.ajouter', compact('categories'));
     }
-    public function ajouter_traitement (Request $request)
+    public function ajouter_categorie_traitement (Request $request)
     {
        $categorie = New Categorie();
        $categorie->libelle = $request->libelle;
@@ -46,7 +46,7 @@ class CategorieController extends Controller
     $categorie->libelle = $request->libelle;
     $categorie->description = $request->description;
     $categorie->save();
-    return redirect('/catégories')->with('status',' le catégorie a été modifier avec succès');
+    return redirect('/categories')->with('status',' le catégorie a été modifier avec succès');
     }
     public function supprimer($id)
     {
