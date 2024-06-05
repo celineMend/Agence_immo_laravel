@@ -1,73 +1,6 @@
 <!doctype html>
 <html lang="en">
 
-{{-- <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Interface Utilisateur - Propriétés</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <style>
-    .card-custom {
-      height: 100%;
-    }
-    .card-img-top-custom {
-      height: 200px;
-      object-fit: cover;
-    }
-  </style>
-</head>
-<body>
-  <div class="container mt-5">
-    <a href="{{ route('proprietes.ajouter_traitement') }}" class="btn btn-info mb-3">Ajouter</a>
-    <ul>
-        @foreach ($errors->all() as $error)
-            <li class="alert alert-danger">{{ $error }}</li>
-        @endforeach
-    </ul>
-    @if (session('status'))
-      <div class="alert alert-success">
-        {{ session('status') }}
-      </div>
-    @endif
-
-    <div class="row">
-      @foreach($proprietes as $propriete)
-        <div class="col-md-3 mb-4 d-flex align-items-stretch">
-          <div class="card card-custom">
-            <img src="{{ $propriete->image }}" class="card-img-top card-img-top-custom" alt="Image de la propriété">
-            <div class="card-body">
-              <h5 class="card-title">{{ $propriete->nom }}</h5>
-              <p class="card-text">{{ $propriete->description }}</p>
-              <p class="card-text">Adresse: {{ $propriete->adresse }}</p>
-              <p class="card-text">Statut: {{ $propriete->statut }}</p>
-              <a href="/proprietes/{{ $propriete->id }}" class="btn btn-info">Voir détail</a><br><br>
-              <a href="/modifier/{{ $propriete->id }}" class="btn btn-info">Modifier</a><br>
-
-              <button class="btn btn-danger mt-2" onclick="confirmDelete({{ $propriete->id }})">Supprimer</button>
-            </div>
-          </div>
-        </div>
-      @endforeach
-    </div>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  <script>
-    function confirmDelete(id) {
-        const confirmed = confirm(`Êtes-vous sûr de vouloir supprimer la propriété avec l'ID ${id} ?`);
-        if (confirmed) {
-            window.location.href = `/proprietes/supprimer/${id}`;
-        }
-    }
-</script>
-
-</body>
-</html> --}}
-
-
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -129,44 +62,8 @@
 
         }
         .card-group {
-            margin-top: 50px;
             display: flex;
             gap: 2%;
-        }
-        .card {
-            height: 200px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: 0.3s;
-            /* overflow-y: hidden; */
-        }
-        .card:hover {
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-        }
-        .card-img-start {
-            width: 100%;
-            height: 200px;
-        }
-        .card-body {
-            padding: 2rem;
-        }
-        .card-title {
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-        }
-        .card-text {
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-        }
-        .card-text small {
-            font-weight: normal;
-        }
-        .card-text a {
-            color: blueviolet;
-            text-decoration: none;
-            margin-left: 1rem;
-        }
-        .card-text a:hover {
-            text-decoration: underline;
         }
 
 
@@ -188,7 +85,7 @@
                     </ul>
                 </div>
                 <div class="btns">
-                    <a class="btn btn-light" href="">Connexion</a>
+                    <a class="btn btn-light" href="{{ route('login') }}">Connexion</a>
                     <a class="btn btn-" style="background-color: blueviolet; color: white;" href="">Contact</a>
                 </div>
             </div>
@@ -221,32 +118,16 @@
         <section class="categorie">
             <h2 class="title" style="font-size: 22px; border-bottom: 2px solid blueviolet; padding-bottom: 5px;">Nos différente catégories de proprietées</h2>
             <div class="card-group">
+                @foreach($categories as $categorie)
                 <div class="card text-bg-dark">
                     <img src="https://img.freepik.com/photos-gratuite/villa-luxe-piscine-design-contemporain-spectaculaire-art-numerique-immobilier-maison-maison-propriete-ge_1258-150749.jpg?t=st=1717504664~exp=1717508264~hmac=90f2ff5bbe0034868f6f0aecc7fc21c79be0c1818ebecbf4596fe33878895297&w=1380" class="card-img" alt="...">
                     <div class="card-img-overlay">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><small>Last updated 3 mins ago</small></p>
+                        <h5 class="card-title">{{ $categorie->libelle }}</h5>
+                        <p class="card-text">{{ $categorie->description }}</p>
+                        {{-- <p class="card-text"><small>Last updated 3 mins ago</small></p> --}}
                     </div>
                 </div>
-
-                <div class="card text-bg-dark">
-                    <img src="https://img.freepik.com/photos-gratuite/villa-luxe-piscine-design-contemporain-spectaculaire-art-numerique-immobilier-maison-maison-propriete-ge_1258-150749.jpg?t=st=1717504664~exp=1717508264~hmac=90f2ff5bbe0034868f6f0aecc7fc21c79be0c1818ebecbf4596fe33878895297&w=1380" class="card-img" alt="...">
-                    <div class="card-img-overlay">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><small>Last updated 3 mins ago</small></p>
-                    </div>
-                </div>
-
-                <div class="card text-bg-dark">
-                    <img src="https://img.freepik.com/photos-gratuite/villa-luxe-piscine-design-contemporain-spectaculaire-art-numerique-immobilier-maison-maison-propriete-ge_1258-150749.jpg?t=st=1717504664~exp=1717508264~hmac=90f2ff5bbe0034868f6f0aecc7fc21c79be0c1818ebecbf4596fe33878895297&w=1380" class="card-img" alt="...">
-                    <div class="card-img-overlay">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><small>Last updated 3 mins ago</small></p>
-                    </div>
-                </div>
+               @endforeach
             </div>
         </section>
 
@@ -254,22 +135,29 @@
             <h2 class="title" style="font-size: 22px; border-bottom: 2px solid blueviolet; padding-bottom: 5px;">Voici la liste de toutes nos proprieté</h2>
             <div class="row row-cols-1 row-cols-md-2 g-4">
                 @foreach($proprietes as $propriete)
-                {{-- <div class="col">
-                    <div class="card">
-                        <img src="{{ $propriete->image }}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $propriete->nom }}</h5>">
-                            <p class="card-text">{{ $propriete->categorie }}</p>
-                            <p class="card-text">{{ $propriete->adresse }}</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <p class="card-text"><small class="text-muted">{{ $propriete->date_ajout }}</small></p>
-                                <a href="{{ route('proprietes.detail', $propriete->id) }}" style="font-size: 16px;"><i class="fa-regular fa-eye"></i></a>
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="row g-0 h-100">
+                            <div class="col-md-4">
+                                <img src="{{ $propriete->image }}" class="img-fluid rounded-start h-100" alt="..." style="object-fit: cover;">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">{{ $propriete->nom }}</h5>
+                                    <p class="card-text">{{ $propriete->categorie }}</p>
+                                    <p class="card-text">{{ $propriete->adresse }}</p>
+                                    <div class="mt-auto d-flex justify-content-between align-items-center">
+                                        <p class="card-text"><small class="text-muted">{{ $propriete->date_ajout }}</small></p>
+                                        <a href="{{ route('proprietes.detail', $propriete->id) }}" style="font-size: 16px;"><i class="fa-regular fa-eye"></i></a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div> --}}
+                </div>
                 @endforeach
             </div>
+
         </section>
 
 

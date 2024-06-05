@@ -11,7 +11,7 @@ class CategorieController extends Controller
     public function index()
     {
         $categories = Categorie::all();
-        return view('categories.index', compact('categories'));
+        return view('proprietes.index', compact('categories'));
     }
 
     public function ajouter()

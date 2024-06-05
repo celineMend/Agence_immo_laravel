@@ -10,9 +10,11 @@ class ProprieteController extends Controller
 {
     public function index()
     {
+        $categories = Categorie::all();
         $proprietes = Propriete::all();
-        return view('proprietes.index', compact('proprietes'));
+        return view('proprietes.index', compact('proprietes', 'categories'));
     }
+
 
     public function ajouter()
     {
