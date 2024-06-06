@@ -1,6 +1,3 @@
-<!doctype html>
-<html lang="en">
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -92,8 +89,17 @@
                     </ul>
                 </div>
                 <div class="btns">
-                    <a class="btn btn-light" href="">Connexion</a>
+                    <a class="btn btn-light" href="{{ route('login') }}">Connexion</a>
+                    @auth
+                    <a class="btn btn-light" href="#" onclick="document.getElementById('logout-form').submit()">
+                        <form method="post" action="{{ route('logout')}}" id="logout-form">
+                            @csrf
+                        </form>
+                        Déconnexion
+                    </a>
+                    @endauth
                     <a class="btn btn-" style="background-color: blueviolet; color: white;" href="">Contact</a>
+
                 </div>
             </div>
         </nav>
@@ -137,7 +143,10 @@
                 </div>
                @endforeach
             </div>
-            <a href="/categories" class="btn" style="background-color: blueviolet; color: white;margin-top: 10px;">Gérer les catégories</a>
+            @auth
+            <a href="/categories" class="btn" style="background-color: blueviolet; color: white;margin-top: 10px;">Gérer les catégories
+            </a>
+            @endauth
         </section>
 
         <section class="section">
@@ -159,8 +168,10 @@
                                         <p class="card-text"><small class="text-muted">{{ $propriete->date_ajout }}</small></p>
                                         <div>
                                             <a href="{{ route('proprietes.detail', $propriete->id) }}" style="font-size: 16px;"><i class="fa-regular fa-eye"></i></a>
+                                            @auth
                                             <a href="{{ route('proprietes.modifier', $propriete->id) }}" style="font-size: 16px;"><i class="fa-solid fa-pencil"></i>
                                             <a href="{{ route('proprietes.supprimer', $propriete->id) }}" style="font-size: 16px;"><i class="fa-solid fa-trash"></i></a>
+                                            @endauth
                                         </div>
                                     </div>
                                 </div>
@@ -178,7 +189,7 @@
 
 
 
-        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top mt-5">
         <p class="col-md-4 mb-0 text-body-secondary">&copy; 2024 CélinaImmo, Inc</p>
 
         <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">

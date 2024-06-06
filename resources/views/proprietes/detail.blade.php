@@ -57,8 +57,10 @@
                     <p>{{ $commentaire->contenu }}</p>
                     <small class="text-muted">Posté le {{ $commentaire->date_publication }}</small>
                     <div class="d-flex gap-3 justify-content-end">
+                        @auth
                         <a href="/modifierCommentaire/{{ $commentaire->id }}" class="text-primary"><i class="fa-solid fa-pencil"></i></a>
                         <a href="/supprimerCommentaire/{{ $commentaire->id }}" class="text-danger"><i class="fa-solid fa-trash"></i></a>
+                        @endauth
                     </div>
                 </li>
             @endforeach
@@ -84,12 +86,16 @@
         </div>
     </main>
 
-    <footer class="blog-footer">
-        <nav class="blog-pagination">
-            <a class="btn btn-outline-primary" href="/proprietes">Accueil</a>
-            <a class="btn btn-outline-secondary" href="/ajouter">Partager</a>
-        </nav>
-    </footer>
+    @auth
+    <div class="container">
+        <footer class="blog-footer mt-5 mb-2">
+            <nav class="blog-pagination">
+                <a class="btn btn-outline-primary" href="/proprietes">Accueil</a>
+                <a class="btn btn-outline-secondary" href="/ajouter">Partager</a>
+            </nav>
+        </footer>
+    </div>
+    @endauth
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>

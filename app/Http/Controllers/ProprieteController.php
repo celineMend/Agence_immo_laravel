@@ -42,9 +42,10 @@ class ProprieteController extends Controller
        $propriete->description = $request->description;
        $propriete->adresse = $request->adresse;
        $propriete->statut = $request->statut;
-       $propriete->date_ajout= $request->date_ajout=now();
-       $propriete->user_id = $request->user_id;
+       $propriete->date_ajout = now();
+        $propriete->user_id = auth()->user()->id;
        $propriete->save();
+
        return redirect('/proprietes')->with('status','propriete a été ajouter avec success');
 
     }

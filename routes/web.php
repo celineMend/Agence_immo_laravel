@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\ProprieteController;
 use App\Http\Controllers\CommentaireController;
+use App\Http\Controllers\Auth\ConnexionController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -38,3 +39,7 @@ Route::post('modifierCommentaire/{id}/traitement', [CommentaireController::class
 
 Route::get('supprimerCommentaire/{id}', [CommentaireController::class, 'supprimerCommentaire']);
 
+/* Les routes pour l'authentification */
+Route::get('login', [AuthController::class, 'login'])->name('login');
+Route::post('login', [AuthController::class, 'authenticate'])->name('authenticate');
+Route::post('logout', [AuthController::class, 'logout'])->name('logout');
